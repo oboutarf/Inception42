@@ -1,1 +1,37 @@
-# docker compose
+version:  '3'
+services:
+    nginx:
+      depends_on:
+        - wordpress
+      container_name: nginx
+      build: requirements/nginx/
+      ports:
+        - "443:443"
+      volumes:
+        - "~/Desktop/inception/website:/var/www/html"
+      networks:
+        - network
+      restart: always
+    wordpress:
+      depends_on:
+        - mariadb
+      container_name: wordpress
+      build: ./requirements/wordpress
+      env_file: .env
+      networks:
+        - network
+      volumes:
+        - "~/Desktop/inception/website:/var/www/html"
+      restart: always
+    mariadb:
+          container_name: mariadb
+          image: mariadb
+          env_file: .env
+          networks:
+            - network
+          volumes:
+            - "~/Desktop/inception/website:/var/www/html"
+          restart: always
+networks:
+  network:
+    driver: bridge

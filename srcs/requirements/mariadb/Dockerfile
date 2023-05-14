@@ -3,10 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+         #
+#    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 11:08:49 by oscobou           #+#    #+#              #
-#    Updated: 2023/05/01 11:08:50 by oscobou          ###   ########.fr        #
+#    Updated: 2023/05/14 15:37:29 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+FROM debian:buster
 
