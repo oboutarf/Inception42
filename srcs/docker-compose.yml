@@ -25,8 +25,8 @@ services:
       restart: always
     mariadb:
           container_name: mariadb
-          image: mariadb
           env_file: .env
+          build: ./requirements/mariadb
           networks:
             - network
           volumes:
