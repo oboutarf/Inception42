@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
+#    By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 11:08:49 by oscobou           #+#    #+#              #
-#    Updated: 2023/05/16 15:17:44 by oboutarf         ###   ########.fr        #
+#    Updated: 2023/05/17 12:47:05 by oscobou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,17 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install -y mariadb-server
 
-COPY ./conf/my.cnf /etc/mysql/mariadb.conf.d/
+RUN mkdir -p /var/run/mysqld \
+    && chown -R mysql:mysql /var/run/mysqld \
+    && chmod 777 /var/run/mysqld
 
-RUN mkdir -p /var/run/mysqld
-RUN chmod 777 /var/run/mysqld
+EXPOSE 3306
 
-COPY ./build/build-mariadb.sh /
+RUN chmod 777 /var/lib/mysql
 
-RUN chmod +x /build-mariadb.sh
+COPY ./conf/my.cnf /usr/local/bin/
+COPY ./build/build-mariadb.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/build-mariadb.sh
+RUN chmod +x /usr/local/bin/my.cnf
 
-CMD ["/build-mariadb.sh"]
+CMD ["/usr/local/bin/build-mariadb.sh"]

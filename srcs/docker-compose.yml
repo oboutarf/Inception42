@@ -1,12 +1,12 @@
-version:  '3'
+version:  '3.9'
 services:
     nginx:
       depends_on:
         - wordpress
       container_name: nginx
-      build: requirements/nginx/
+      build: ./requirements/nginx
       volumes:
-        - "~/data/wordpress:/var/www/html"
+        - "wordpress-vol:/var/www/html"
       ports:
         - "443:443"
       networks:
@@ -21,17 +21,32 @@ services:
       networks:
         - network
       volumes:
-        - "~/data/wordpress:/var/www/html"
+        - "wordpress-vol:/var/www/html"
       restart: always
     mariadb:
+          ports:
+            - 3306:3306
           container_name: mariadb
           env_file: .env
           build: ./requirements/mariadb
           networks:
             - network
           volumes:
-            - "~/data/mariadb:/var/www/html"
+            - "mariadb-vol:/var/lib/mysql"
           restart: always
+volumes:
+  mariadb-vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/oscobou/data/mariadb
+      o: bind
+  wordpress-vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/oscobou/data/wordpress
+      o: bind
 networks:
   network:
     driver: bridge
