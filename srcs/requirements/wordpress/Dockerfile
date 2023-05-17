@@ -6,7 +6,7 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/13 12:45:42 by oboutarf          #+#    #+#              #
-#    Updated: 2023/05/14 17:23:36 by oboutarf         ###   ########.fr        #
+#    Updated: 2023/05/17 18:02:28 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,7 @@ COPY conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 COPY build/build-wordpress.sh /var/www/build-wordpress.sh
 
-RUN chmod +x /var/www/build-wordpress.sh \
-        && chmod -R 755 /var/www/html
+RUN chmod +x /var/www/build-wordpress.sh
 
 RUN mkdir -p /run/php
 

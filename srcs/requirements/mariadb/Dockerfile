@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+         #
+#    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 11:08:49 by oscobou           #+#    #+#              #
-#    Updated: 2023/05/17 12:47:05 by oscobou          ###   ########.fr        #
+#    Updated: 2023/05/17 17:27:44 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,8 @@ EXPOSE 3306
 
 RUN chmod 777 /var/lib/mysql
 
-COPY ./conf/my.cnf /usr/local/bin/
+COPY ./conf/my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./build/build-mariadb.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/build-mariadb.sh
-RUN chmod +x /usr/local/bin/my.cnf
 
 CMD ["/usr/local/bin/build-mariadb.sh"]

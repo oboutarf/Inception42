@@ -25,7 +25,7 @@ services:
       restart: always
     mariadb:
           ports:
-            - 3306:3306
+            - "3306:3306"
           container_name: mariadb
           env_file: .env
           build: ./requirements/mariadb
@@ -39,13 +39,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/oscobou/data/mariadb
+      device: /home/oboutarf/data/mariadb
       o: bind
   wordpress-vol:
     driver: local
     driver_opts:
       type: none
-      device: /Users/oscobou/data/wordpress
+      device: /home/oboutarf/data/wordpress
       o: bind
 networks:
   network:

@@ -1,9 +1,6 @@
 #!/bin/sh
 
 service mysql start 
-until mysqladmin ping >/dev/null 2>&1; do
-    sleep 1
-done
 
 echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql
 echo "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql
