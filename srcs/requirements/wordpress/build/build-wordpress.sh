@@ -6,8 +6,7 @@ then
 else
     wp core download --allow-root \
     && wp config create --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOSTNAME --allow-root \
-    && wp core install --url=http://localhost --title="test-1" --admin_user=$MYSQL_USER --admin_password=$MYSQL_ROOT_PASSWORD \
-    --admin_email="osc.boutarfa@gmail.com" --allow-root
+    && wp core install --url=https://localhost --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWD --admin_email=$WP_ADMIN_MAIL --allow-root
 
 fi
 

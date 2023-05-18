@@ -6,7 +6,7 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 10:56:46 by oscobou           #+#    #+#              #
-#    Updated: 2023/05/18 00:41:48 by oboutarf         ###   ########.fr        #
+#    Updated: 2023/05/18 19:06:07 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ renew:
 	make down
 	docker volume rm srcs_mariadb-vol
 	docker volume rm srcs_wordpress-vol
-	rm -rf ~/data/wordpress/*
-	rm -rf ~/data/mariadb/*
+	sudo rm -rf /home/oboutarf/data/wordpress/*
+	sudo rm -rf /home/oboutarf/data/mariadb/*
 	make up
 
 see:
